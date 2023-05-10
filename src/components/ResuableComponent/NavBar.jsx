@@ -12,6 +12,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
+import hostUrl from "../Assets/Api";
+
 const NavBar = () => {
    // Register Hooks
    const [registerModel, setRegisterModel] = useState(false);
@@ -72,7 +74,7 @@ const NavBar = () => {
          try {
             await axios
                .post(
-                  "http://localhost:5000/api/account/register",
+                  `${hostUrl}/api/account/register`,
                   registerObject
                )
                .then((res) => {
@@ -112,7 +114,7 @@ const NavBar = () => {
 
       try {
          await axios
-            .post("http://localhost:5000/api/account/login", loginObject)
+            .post(`${hostUrl}/api/account/login`, loginObject)
             .then((res) => {
                if (res.data.registerAs === "Employer") {
                   localStorage.setItem("token", res.data.token);
