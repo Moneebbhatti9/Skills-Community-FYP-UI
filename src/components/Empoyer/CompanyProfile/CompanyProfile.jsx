@@ -15,6 +15,7 @@ import Button from "react-bootstrap/Button";
 import "./css/CompanyProfile.css";
 import jwtDecode from "jwt-decode";
 import dummyLogo from "./Assets/dummyLogo.png";
+import hostUrl from "../../Assets/Api";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -47,7 +48,7 @@ const CompanyProfile = () => {
 
    // Fetch Company Info to display values in input fields
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/company/profile/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/company/profile/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -68,7 +69,7 @@ const CompanyProfile = () => {
 
    // Fetch Company Social Links Info to display values in input fields
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/company/profile/social/links/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/company/profile/social/links/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -86,7 +87,7 @@ const CompanyProfile = () => {
 
    // Fetch Company Contact Info to display values in input fields
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/company/profile/contact/info/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/company/profile/contact/info/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -106,7 +107,7 @@ const CompanyProfile = () => {
       getCompanyInfo();
    }, []);
    const getCompanyInfo = async () => {
-      const apiUrl = `http://localhost:5000/api/company/profile/logo/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/company/profile/logo/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -123,7 +124,7 @@ const CompanyProfile = () => {
       e.preventDefault();
 
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/company/profile";
+      const apiUrl = `${hostUrl}/api/company/profile`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -157,7 +158,7 @@ const CompanyProfile = () => {
       e.preventDefault();
 
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/company/profile/social/links";
+      const apiUrl = `${hostUrl}/api/company/profile/social/links`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -190,7 +191,7 @@ const CompanyProfile = () => {
       e.preventDefault();
 
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/company//profile/contact/info";
+      const apiUrl = `${hostUrl}/api/company//profile/contact/info`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -218,7 +219,7 @@ const CompanyProfile = () => {
    // Creating Company Profile Logo
    const companyProfileLogoUpload = () => {
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/company/profile/logo";
+      const apiUrl = `${hostUrl}/api/company/profile/logo`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {

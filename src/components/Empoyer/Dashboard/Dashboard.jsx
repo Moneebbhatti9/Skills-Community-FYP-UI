@@ -8,6 +8,7 @@ import { FaFileInvoice } from "react-icons/fa";
 import { TfiCommentAlt } from "react-icons/tfi";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import hostUrl from "../../Assets/Api";
 const { Header, Content, Footer, Sider } = Layout;
 
 const EmployerDashboard = () => {
@@ -19,7 +20,7 @@ const EmployerDashboard = () => {
    const user = jwtDecode(jwt);
 
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/post/job/company/${user.id}`;
+      const apiUrl = `${hostUrl}/api/post/job/company/${user.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: { Authorization: `Bearer ${token}` },
@@ -31,7 +32,7 @@ const EmployerDashboard = () => {
    }, [user.id]);
 
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/company/profile/${user.id}`;
+      const apiUrl = `${hostUrl}/api/company/profile/${user.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -40,11 +41,12 @@ const EmployerDashboard = () => {
       };
 
       axios.get(apiUrl, config).then((res) => {
+         console.log("_id res  ", res)
          const comID = res.data[0]._id;
 
          axios
             .get(
-               `http://localhost:5000/api/company/applications/length/${comID}`,
+               `${hostUrl}/api/company/applications/length/${comID}`,
                config
             )
             .then((res) => {
