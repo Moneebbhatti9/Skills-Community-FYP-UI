@@ -10,6 +10,7 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import "./CandidateAppliedJob.css";
 import AppliedJobs from "./components/AppliedJobs";
+import hostUrl from "../../Assets/Api";
 const { Header, Content, Footer, Sider } = Layout;
 
 const CandidateAppliedJobs = () => {
@@ -19,7 +20,7 @@ const CandidateAppliedJobs = () => {
    const userId = jwtDecode(jwt);
 
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/candidate/applied/job/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/candidate/applied/job/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
