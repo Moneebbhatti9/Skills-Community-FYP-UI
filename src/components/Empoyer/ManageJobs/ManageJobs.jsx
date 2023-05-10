@@ -7,6 +7,7 @@ import "./EmployerManageJobs.css";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import ManageJob from "./components/ManageJob";
+import hostUrl from "../../Assets/Api";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -18,7 +19,7 @@ const ManageJobs = () => {
    const userId = jwtDecode(jwt);
 
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/company/profile/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/company/profile/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -38,7 +39,7 @@ const ManageJobs = () => {
 
          axios
             .get(
-               `http://localhost:5000/api/company/manage/job/${comID}`,
+               `${hostUrl}/api/company/manage/job/${comID}`,
                config
             )
             .then((res) => {
