@@ -15,6 +15,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import jwtDecode from "jwt-decode";
 import "./css/Candidate.css";
 import dummyLogo from "./Assets/dummyLogo.png";
+import hostUrl from "../../Assets/Api";
 const { Header, Content, Footer, Sider } = Layout;
 
 const CandidateProfile = () => {
@@ -54,7 +55,7 @@ const CandidateProfile = () => {
 
    // Fetch Candidate Info to display values in input fields
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/candidate/profile/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/candidate/profile/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -80,7 +81,7 @@ const CandidateProfile = () => {
 
    // Fetch Candidate Social Links Info to display values in input fields
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/candidate/social/profile/links/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/candidate/social/profile/links/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -98,7 +99,7 @@ const CandidateProfile = () => {
 
    // Fetch Candidate Contact Info to display values in input fields
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/candidate/profile/contact/info/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/candidate/profile/contact/info/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -118,7 +119,7 @@ const CandidateProfile = () => {
       getCandidateInfo();
    }, []);
    const getCandidateInfo = async () => {
-      const apiUrl = `http://localhost:5000/api/candidate/profile/logo/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/candidate/profile/logo/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -135,7 +136,7 @@ const CandidateProfile = () => {
       e.preventDefault();
 
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/candidate/profile";
+      const apiUrl = `${hostUrl}/api/candidate/profile`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -174,7 +175,7 @@ const CandidateProfile = () => {
       e.preventDefault();
 
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/candidate/profile/social/links";
+      const apiUrl = `${hostUrl}/api/candidate/profile/social/links`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -208,7 +209,7 @@ const CandidateProfile = () => {
       e.preventDefault();
 
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/candidate/profile/contact/info";
+      const apiUrl = `${hostUrl}/api/candidate/profile/contact/info`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -236,7 +237,7 @@ const CandidateProfile = () => {
    // Create Candidate Profile Logo
    const candidateProfileLogoUpload = () => {
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/candidate/profile/logo";
+      const apiUrl = `${hostUrl}/api/candidate/profile/logo`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
