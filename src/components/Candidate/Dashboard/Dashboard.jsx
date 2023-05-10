@@ -29,7 +29,7 @@ const CandidateDashboard = () => {
       axios.get(apiUrl, config).then((res) => {
          setAppliedJobsLength(res.data.jobsLength);
       });
-   }, [user.Id]);
+   }, [user.id]);
 
    return (
       <>

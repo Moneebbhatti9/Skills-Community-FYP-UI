@@ -134,7 +134,6 @@ const ManageJobs = () => {
                                        backgroundColor: "#F5F7FC",
                                        justifyContent: "space-between",
                                        borderRadius: "10px",
-                                       backgroundColor: "#FFFFFF",
                                     }}
                                  >
                                     <table

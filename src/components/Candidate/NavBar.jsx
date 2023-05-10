@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Form from "react-bootstrap/Form";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./NavBar.css";
-import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Space } from "antd";
 
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";

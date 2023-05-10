@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import NavBar from "../NavBar";
 import "../Dashboard/css/Dashboard.css";
 import { Layout, Menu } from "antd";
 import SideLinks from "../SideLinks";
-import { CgBriefcase } from "react-icons/cg";
-import { GoLocation } from "react-icons/go";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import "./CandidateAppliedJob.css";
@@ -116,7 +113,6 @@ const CandidateAppliedJobs = () => {
                                        backgroundColor: "#F5F7FC",
                                        justifyContent: "space-between",
                                        borderRadius: "10px",
-                                       backgroundColor: "#FFFFFF",
                                     }}
                                  >
                                     <table
