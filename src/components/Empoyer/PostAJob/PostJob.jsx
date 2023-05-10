@@ -11,6 +11,7 @@ import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./css/PostJob.css";
+import hostUrl from './../../Assets/Api';
 const { Header, Content, Footer, Sider } = Layout;
 
 const PostJob = () => {
@@ -35,7 +36,7 @@ const PostJob = () => {
       e.preventDefault();
 
       setShow(true);
-      const apiUrl = "http://localhost:5000/api/post/job";
+      const apiUrl = `${hostUrl}/api/post/job`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
