@@ -8,6 +8,7 @@ import SideLinks from "../SideLinks";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import MappingApplicant from "./components/MappingApplicant";
+import hostUrl from "../../Assets/Api";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -18,7 +19,7 @@ const AllApplicants = () => {
    const userId = jwtDecode(jwt);
 
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/company/profile/${userId.id}`;
+      const apiUrl = `${hostUrl}/api/company/profile/${userId.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
@@ -38,7 +39,7 @@ const AllApplicants = () => {
 
          axios
             .get(
-               `http://localhost:5000/api/company/all/applicants/${comID}`,
+               `${hostUrl}/api/company/all/applicants/${comID}`,
                config
             )
             .then((res) => {

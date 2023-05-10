@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { GiMoneyStack } from "react-icons/gi";
 import { GoLocation } from "react-icons/go";
 import axios from "axios";
+import hostUrl from "../../../Assets/Api";
 
 const MappingApplicant = ({ applicant }) => {
    const [avatar, setAvatar] = useState("");
 
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/company//single/applicant/avatar/${applicant.userID}`;
+      const apiUrl = `${hostUrl}/api/company//single/applicant/avatar/${applicant.userID}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
