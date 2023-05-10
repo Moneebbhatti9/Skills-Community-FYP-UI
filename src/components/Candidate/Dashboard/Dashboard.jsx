@@ -8,6 +8,7 @@ import { FaFileInvoice } from "react-icons/fa";
 import { TfiCommentAlt } from "react-icons/tfi";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import hostUrl from "../../Assets/Api";
 const { Header, Content, Footer, Sider } = Layout;
 
 const CandidateDashboard = () => {
@@ -17,7 +18,7 @@ const CandidateDashboard = () => {
    const user = jwtDecode(jwt);
 
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/candidate/applied/job/length/${user.id}`;
+      const apiUrl = `${hostUrl}/api/candidate/applied/job/length/${user.id}`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
