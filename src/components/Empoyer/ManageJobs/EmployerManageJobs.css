@@ -1,0 +1,25 @@
+.headingStyle {
+  font-size: 18px;
+  font-weight: 900;
+  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", */
+  /* "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+  padding: 1rem;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.scroll {
+  margin: 4px, 4px;
+  padding: 4px;
+  /* width: 150px; */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.jobLinkStyle {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 28px;
+}

@@ -1,0 +1,50 @@
+.footer-styling{
+    margin-top: 3rem;
+}
+
+.logo-setting{
+margin-bottom: 2rem;
+}
+
+.phoneNO{
+    cursor: pointer;
+    color: #1967d2;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+    
+}
+
+.address{
+    margin-top: 1rem;
+    font-size: 14px;
+    line-height: 30px;
+    color: dimgray;
+    font-weight: 400;
+}
+
+.Footer-heading{
+    font-size: 18px;
+    font-weight: 500;
+    color: #2f2d51;
+    line-height: 1.4em;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+.link-styling{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: dimgray;
+    text-decoration: none;
+    display: block;
+}
+
+.link-div{
+    margin-top: 30px;
+}
+
+.left-margin{
+    margin-left: 5rem;
+}

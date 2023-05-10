@@ -1,0 +1,41 @@
+.title {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 41px;
+    color: #202124;
+    margin-bottom: 10px;
+}
+.subTitle{
+    font-size: 15px;
+    color: dimgray;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+.innerTitle {
+    font-size: 18px;
+    line-height: 30px;
+    color: #1b2032;
+    font-weight: 500;
+    margin-right: 30px;
+    padding: 7px 0;
+}
+
+.inputDesign{
+    font-size: 15px;
+    line-height: 20px;
+    color: #202124;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* .content-margin{
+    margin-left: 100px;
+    margin-right: 100px;
+} */
+
+@media only screen and(min-width: 650px) {
+    .removeMargin{
+        margin:  0 0 !important;
+    }
+}

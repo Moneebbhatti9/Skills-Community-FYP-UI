@@ -1,0 +1,15 @@
+
+
+.dontHaveAccountDesign{
+    font-size: 14px;
+    line-height: 19px;
+    color: dimgray;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.linkDesign {
+    font-size: 15px;
+    color: #202124;
+    text-decoration: none !important;
+}

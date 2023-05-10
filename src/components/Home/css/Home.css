@@ -1,0 +1,140 @@
+.Heading-Class{
+    font-size: 50px;
+    line-height: 60px;
+    color: #202124;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.aside{
+    margin-left: 5%;
+}
+
+.Recruiter-Heading{
+    font-size: 30px;
+    line-height: 1.2em;
+    color: #202124;
+    font-weight: 500;
+}
+
+.recruiter-aside{
+    margin-left: 6rem;
+    margin-right: 6rem;
+}
+
+.post-job-button{
+    margin-top: 18px;
+    min-width: 180px;
+    padding: 15px 0px !important;
+}
+
+@media only screen and (max-width:990px) {
+    .display-none{
+       display: none !important;
+   }
+   .image-none{
+    display: none;
+   }
+   
+   .POST-JOBS-TEXT{
+        margin-top:5rem;
+        margin-bottom:5rem;
+   }
+}
+
+@media only screen and (min-width:990px) {
+    .large-display{
+       display: none !important;
+   }
+}
+
+
+@media only screen and (max-width:550px) {
+    .mobile-view{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+   }
+
+   .mobile-view1{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+   .intro{
+    align-items: center;
+    margin: 0 !important;
+    max-height: 90vh !important;
+    margin-top: 30px !important;
+  }
+}
+
+/* top companies styling */
+
+.Heading-Class-Companies{
+    justify-content: center;
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: #202124;
+    font-weight: 400;
+}
+
+.top-companies{
+    padding: 20px;
+}
+
+.img-size{
+    max-width: 8rem;
+}
+
+/* ..............footer styling.................... */
+
+/* .footer-styling{
+    margin-top: 3rem;
+}
+
+.logo-setting{
+margin-bottom: 2rem;
+}
+
+.phoneNO{
+    cursor: pointer;
+    color: #1967d2;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+    
+}
+
+.address{
+    margin-top: 1rem;
+    font-size: 14px;
+    line-height: 30px;
+    color: dimgray;
+    font-weight: 400;
+}
+
+.Footer-heading{
+    font-size: 18px;
+    font-weight: 500;
+    color: #2f2d51;
+    line-height: 1.4em;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+.link-styling{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: dimgray;
+    text-decoration: none;
+    display: block;
+}
+
+.link-div{
+    margin-top: 30px;
+}
+
+.left-margin{
+    margin-left: 5rem;
+} */

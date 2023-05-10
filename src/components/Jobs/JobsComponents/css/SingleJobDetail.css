@@ -1,0 +1,88 @@
+
+.bg-image{
+    background-image: "https://superio-next.vercel.app/images/icons/bg-4.png";
+}
+
+.job-detail{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #202124;
+    margin-bottom: 20px;
+}
+
+.paragraph{
+    font-size: 15px;
+    line-height: 26px;
+    color: dimgray;
+    margin-bottom: 26px;
+}
+
+.list{
+    font-size: 15px;
+    line-height: 26px;
+    color: dimgray;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+.job-overview{
+    position: relative;
+    margin-top: 2.5rem;
+}
+
+.job-overview_company{
+    position: relative;
+    margin-top: 2.5rem;
+}
+
+.job-overview>ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.job-overview li:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.job-overview li {
+    padding-left: 20px;
+}
+
+.icon {
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+
+
+.company-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #202124;
+    margin-bottom: 19px;
+}
+
+.company-span{
+    font-size: 15px;
+    line-height: 25px;
+    text-align: right;
+    color: dimgray;
+    padding-left: 3rem;
+}
+
+
+.company-webiste_button{
+    display: block;
+    width: 100%;
+    background: rgba(25,103,210,.15);
+    border-radius: 8px;
+}

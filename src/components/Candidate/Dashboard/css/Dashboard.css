@@ -1,0 +1,88 @@
+.sideNavLinkDesign {
+    width: 90%;
+    border-radius: 12px;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 10px 0;
+    margin: 0 5px;
+}
+
+.sideNavLinkDesign:hover {
+    background-color: purple;
+    color: whitesmoke;
+}
+
+.active {
+    background-color: purple;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.heading{
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 41px;
+    color: #202124;
+    margin-bottom: 10px;
+}
+
+.subHeading{
+    font-size: 15px;
+    color: dimgray;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* CARD DESIGN */
+
+.icon_design-postjob{
+    padding: 14px;
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    font-size: 40px;
+    color: #1967d2;
+    text-align: center;
+    background-color: rgba(25,103,210,.1);
+    border-radius: 8px;
+}
+
+.icon_design-application{
+    padding: 14px;
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    font-size: 40px;
+    color: #d93025;
+    background: rgba(217,48,37,.1);
+    text-align: center;
+    border-radius: 8px;
+}
+
+.icon_design-messages{
+    padding: 14px;
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    font-size: 40px;
+    color: #f9ab00;
+    background: rgba(249,171,0,.1);
+    text-align: center;
+    border-radius: 8px;
+}
+
+.icon_design-shortlist{
+    padding: 14px;
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    font-size: 40px;
+    color: #34a853;
+    background: rgba(52,168,83,.1);
+    text-align: center;
+    border-radius: 8px;
+}

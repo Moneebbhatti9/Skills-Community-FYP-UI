@@ -1,0 +1,31 @@
+.applicantAvatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.name_style{
+    font-size: 18px;
+    color: #202124;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.detail_style {
+    font-size: 14px;
+}
+
+.specilization_first{
+    background-color: #F0F5F7;
+    padding: 5px 20px;
+    border-radius: 30px;
+}
+
+.viewApplication{
+    background-color: #F0F5F7;
+    padding: 9px 8px;
+    border-radius: 15px;
+}
