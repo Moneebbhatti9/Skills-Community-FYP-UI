@@ -7,6 +7,8 @@ import ReactPaginate from "react-paginate";
 import axios from "axios";
 import "./FindJobs.css";
 import Footer from "../ResuableComponent/Footer";
+import hostUrl from "../Assets/Api";
+
 const FindJobs = () => {
    const [jobs, setJobs] = useState([]);
    const [currentPage] = useState(0);
@@ -16,7 +18,7 @@ const FindJobs = () => {
    useEffect(() => {
       setLoading(true);
       axios
-         .get(`http://localhost:5000/api/post/job?page=${currentPage}`)
+         .get(`${hostUrl}/api/post/job?page=${currentPage}`)
          .then((res) => {
             setJobs(res.data.jobs);
             setTotalPages(res.data.totalPages);
@@ -28,7 +30,7 @@ const FindJobs = () => {
       const currentPage = data.selected - 1 + 1;
 
       await axios
-         .get(`http://localhost:5000/api/post/job?page=${currentPage}`)
+         .get(`${hostUrl}/api/post/job?page=${currentPage}`)
          .then((res) => {
             setJobs(res.data.jobs);
          });

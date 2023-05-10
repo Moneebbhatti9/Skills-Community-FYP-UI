@@ -15,6 +15,7 @@ import "./css/SingleJobDetail.css";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
+import hostUrl from "../../Assets/Api";
 
 const SingleJobDetail = () => {
    const [singleJobDetail, setSingleJobDetail] = useState({});
@@ -30,7 +31,6 @@ const SingleJobDetail = () => {
 
    const [companyLogoPublic, setCompanyLogoPublic] = useState("");
 
-   console.log("Res::::::::::::::::::", companyLogoPublic);
 
    const param = useParams();
    const jobId = param.id;
@@ -42,7 +42,7 @@ const SingleJobDetail = () => {
    }
 
    useEffect(() => {
-      const apiUrl = `http://localhost:5000/api/company/public/profile/${singleJobDetail.userID}`;
+      const apiUrl = `${hostUrl}/api/company/public/profile/${singleJobDetail.userID}`;
       axios.get(apiUrl).then((res) => {
          setCompanyName(res.data[0].comapnyName);
          setTeamSizes(res.data[0].teamSize);
@@ -54,7 +54,7 @@ const SingleJobDetail = () => {
          console.log("Profile Public", res.data[0].userID);
 
          const userID = res.data[0].userID;
-         const apiUrlLogo = `http://localhost:5000/api/company/public/profile/logo/${userID}`;
+         const apiUrlLogo = `${hostUrl}/api/company/public/profile/logo/${userID}`;
          axios.get(apiUrlLogo).then((res) => {
             setCompanyLogoPublic(res.data.companyLogo.logo);
          });
@@ -62,17 +62,17 @@ const SingleJobDetail = () => {
    }, [singleJobDetail.userID]);
 
    // useEffect(() => {
-   //    const apiUrl = `http://localhost:5000/api/company/public/social/links/${singleJobDetail.userID}`;
+   //    const apiUrl = `${hostUrl}/api/company/public/social/links/${singleJobDetail.userID}`;
    //    axios.get(apiUrl).then((res) => {});
    // }, [singleJobDetail.userID]);
 
    // useEffect(() => {
-   //    const apiUrl = `http://localhost:5000/api/company/public/contact/info/${singleJobDetail.userID}`;
+   //    const apiUrl = `${hostUrl}/api/company/public/contact/info/${singleJobDetail.userID}`;
    //    axios.get(apiUrl).then((res) => {});
    // }, [singleJobDetail.userID]);
 
    useEffect(() => {
-      axios.get(`http://localhost:5000/api/post/job/${jobId}`).then((res) => {
+      axios.get(`${hostUrl}/api/post/job/${jobId}`).then((res) => {
          setSingleJobDetail(res.data);
       });
    }, [jobId]);
@@ -100,7 +100,7 @@ const SingleJobDetail = () => {
 
    const handleSubmitJob = () => {
       setLoader(true);
-      const apiUrl = `http://localhost:5000/api/candidate/applied/job`;
+      const apiUrl = `${hostUrl}/api/candidate/applied/job`;
       const token = localStorage.getItem("token");
       const config = {
          headers: {
