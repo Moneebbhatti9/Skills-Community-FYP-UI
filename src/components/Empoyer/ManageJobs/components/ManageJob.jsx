@@ -47,7 +47,7 @@ const ManageJob = ({ job }) => {
                   </div>
                </div>
             </td>
-            <td>3+ Applied </td>
+            <td> <Link to={`/job/applicants/${job._id}`}> 3+ Applied </Link></td>
             <td>
                <span>{createdAt}</span>
                <br />

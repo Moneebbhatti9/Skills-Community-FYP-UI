@@ -13,6 +13,7 @@ import CandidateResume from "./components/Candidate/CandidateResume/CandidateRes
 import CandidateProfile from "./components/Candidate/CandidateProfile/CandidateProfile";
 import CandidateMessages from "./components/Candidate/CandidateMessages/CandidateMessages";
 import CandidateJobAlert from "./components/Candidate/CandidateJobAlert/CandidateJobAlert";
+import JobApplicantsDetail from "./components/Empoyer/ManageJobs/components/JobApplicantsDetail";
 import CandidateAppliedJobs from "./components/Candidate/CandidateAppliedJobs/CandidateAppliedJobs";
 import CandidateShortListedJobs from "./components/Candidate/CandidateShortListedJob/CandidateShortListedJob";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -27,6 +28,7 @@ function App() {
             <Routes>
                <Route path="/candidate/jobs/shortlisted" element={<CandidateShortListedJobs />} />
                <Route path="/candidate/appliedjobs" element={<CandidateAppliedJobs />} />
+               <Route path="/job/applicants/:id" element={<JobApplicantsDetail /> } />
                <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
                <Route path="/candidate/jobalerts" element={<CandidateJobAlert />} />
                <Route path="/employer/dashboard" element={<EmployerDashboard />} />
