@@ -7,20 +7,6 @@ import hostUrl from "../../../Assets/Api";
 const MappingJobApplicants = ({ applicant }) => {
   const [avatar, setAvatar] = useState("");
 
-  useEffect(() => {
-    const apiUrl = `${hostUrl}/api/company//single/applicant/avatar/${applicant.userID}`;
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    axios
-      .get(apiUrl, config)
-      .then((res) => setAvatar(res.data.applicantAvatar.logo));
-  }, [applicant.userID]);
-
   return (
     <>
       <div className="col-lg-6 mt-2">
