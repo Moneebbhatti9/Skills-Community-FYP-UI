@@ -5,6 +5,7 @@ import "../../AllApplicants/css/AllApplicant.css";
 import { Layout, Menu } from "antd";
 import SideLinks from "../../SideLinks";
 import jwtDecode from "jwt-decode";
+import { useNavigate, useParams } from "react-router-dom";
 import MappingJobApplicants from "./MappingJobApplicants";
 import hostUrl from "../../../Assets/Api";
 import axios from "axios";
@@ -12,37 +13,34 @@ import axios from "axios";
 const { Header, Content, Footer, Sider } = Layout;
 
 const JobApplicants = () => {
-  // const [jobApplicants, setJobApplicants] = useState([]);
+  const [jobApplicants, setJobApplicants] = useState([]);
+  const job = useParams();
+  const id = job.id;
+  console.log("id from params: ", id);
+
   const jwt = localStorage.getItem("token");
   const userId = jwtDecode(jwt);
 
   useEffect(() => {
-    const apiUrl = `${hostUrl}/api/company/profile/${userId.id}`;
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    const fetchApplicants = async () => {
+      try {
+        const res = await axios.get(
+          `${hostUrl}/api/all/applicants/of/job/${id}`
+        );
+        console.log("response from API", res.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
-    axios.get(apiUrl, config).then((res) => {
-      const comID = res.data[0]._id;
+    fetchApplicants();
+  }, [id]);
 
-      const token = localStorage.getItem("token");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      axios
-        .get(`${hostUrl}/all/applicants/of/job/${comID}`, config)
-        .then((res) => {
-          console.log("res manage job : ", res);
-          // setJobApplicants(res.data.appliedJobs);
-        });
-    });
-  }, [userId.id]);
+  // useEffect(() => {
+  //   axios.get(`${hostUrl}/api/all/applicants/of/job/${id}`).then((res) => {
+  //     console.log("Job: ", res);
+  //   });
+  // }, []);
 
   return (
     <>
