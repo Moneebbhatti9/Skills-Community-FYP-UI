@@ -43,7 +43,6 @@ const ManageJobs = () => {
                config
             )
             .then((res) => {
-               console.log("res manage job : ", res);
                setManageJobs(res.data.appliedJobs);
                setLoading(false);
             });

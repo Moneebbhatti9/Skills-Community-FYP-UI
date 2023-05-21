@@ -5,8 +5,8 @@ import "../../AllApplicants/css/AllApplicant.css";
 import { Layout, Menu } from "antd";
 import SideLinks from "../../SideLinks";
 import jwtDecode from "jwt-decode";
-import { useNavigate, useParams } from "react-router-dom";
-import MappingJobApplicants from "./MappingJobApplicants";
+import { useParams } from "react-router-dom";
+// import MappingJobApplicants from "./MappingJobApplicants";
 import hostUrl from "../../../Assets/Api";
 import axios from "axios";
 
@@ -23,9 +23,16 @@ const JobApplicants = () => {
 
   useEffect(() => {
     const fetchApplicants = async () => {
+      const token = localStorage.getItem("token");
+      const config = {
+         headers: {
+            Authorization: `Bearer ${token}`,
+         },
+      };
+
       try {
         const res = await axios.get(
-          `${hostUrl}/api/all/applicants/of/job/${id}`
+          `${hostUrl}/api/company/all/applicants/of/job/${id}`, config 
         );
         console.log("response from API", res.data);
       } catch (error) {
