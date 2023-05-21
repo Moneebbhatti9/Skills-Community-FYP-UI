@@ -4,9 +4,8 @@ import "../../Dashboard/css/Dashboard.css";
 import "../../AllApplicants/css/AllApplicant.css";
 import { Layout, Menu } from "antd";
 import SideLinks from "../../SideLinks";
-import jwtDecode from "jwt-decode";
 import { useParams } from "react-router-dom";
-// import MappingJobApplicants from "./MappingJobApplicants";
+import MappingJobApplicants from "./MappingJobApplicants";
 import hostUrl from "../../../Assets/Api";
 import axios from "axios";
 
@@ -16,25 +15,24 @@ const JobApplicants = () => {
   const [jobApplicants, setJobApplicants] = useState([]);
   const job = useParams();
   const id = job.id;
-  console.log("id from params: ", id);
 
-  const jwt = localStorage.getItem("token");
-  const userId = jwtDecode(jwt);
+  console.log("State Job Applicants : ", jobApplicants);
 
   useEffect(() => {
     const fetchApplicants = async () => {
       const token = localStorage.getItem("token");
       const config = {
-         headers: {
-            Authorization: `Bearer ${token}`,
-         },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       };
 
       try {
-        const res = await axios.get(
-          `${hostUrl}/api/company/all/applicants/of/job/${id}`, config 
-        );
-        console.log("response from API", res.data);
+        await axios
+          .get(`${hostUrl}/api/company/all/applicants/of/job/${id}`, config)
+          .then((res) => {
+            setJobApplicants(res.data.jobApplicants);
+          });
       } catch (error) {
         console.log(error);
       }

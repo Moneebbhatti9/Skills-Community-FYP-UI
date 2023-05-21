@@ -18,6 +18,8 @@ const AllApplicants = () => {
    const jwt = localStorage.getItem("token");
    const userId = jwtDecode(jwt);
 
+   console.log("Applicants State : ", applicants)
+
    useEffect(() => {
       const apiUrl = `${hostUrl}/api/company/profile/${userId.id}`;
       const token = localStorage.getItem("token");
@@ -44,6 +46,7 @@ const AllApplicants = () => {
             )
             .then((res) => {
                setApplicants(res.data.allApplicants);
+               console.log("All Applicants : ", res.data.allApplicants);
             });
       });
    }, [userId.id]);
