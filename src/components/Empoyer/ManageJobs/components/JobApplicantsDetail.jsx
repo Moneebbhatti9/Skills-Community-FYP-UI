@@ -145,9 +145,9 @@ const JobApplicants = () => {
                   </div>
                 </div>
                 <div className="row my-5">
-                  {/* {jobApplicants.map((applicant) => (
+                  {jobApplicants.map((applicant) => (
                     <MappingJobApplicants applicant={applicant} />
-                  ))} */}
+                  ))}
                 </div>
               </div>
             </div>
