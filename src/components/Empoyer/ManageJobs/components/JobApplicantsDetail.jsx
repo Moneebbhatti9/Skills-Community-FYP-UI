@@ -8,17 +8,21 @@ import { useParams } from "react-router-dom";
 import MappingJobApplicants from "./MappingJobApplicants";
 import hostUrl from "../../../Assets/Api";
 import axios from "axios";
+import Loader from "./../../../ResuableComponent/Loader";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const JobApplicants = () => {
   const [jobApplicants, setJobApplicants] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const job = useParams();
   const id = job.id;
 
   console.log("State Job Applicants : ", jobApplicants);
 
   useEffect(() => {
+    setLoading(true);
     const fetchApplicants = async () => {
       const token = localStorage.getItem("token");
       const config = {
@@ -32,6 +36,7 @@ const JobApplicants = () => {
           .get(`${hostUrl}/api/company/all/applicants/of/job/${id}`, config)
           .then((res) => {
             setJobApplicants(res.data.jobApplicants);
+            setLoading(false);
           });
       } catch (error) {
         console.log(error);
@@ -144,11 +149,17 @@ const JobApplicants = () => {
                     </div>
                   </div>
                 </div>
-                <div className="row my-5">
-                  {jobApplicants.map((applicant) => (
-                    <MappingJobApplicants applicant={applicant} />
-                  ))}
-                </div>
+                {loading ? (
+                  <div>
+                    <Loader />
+                  </div>
+                ) : (
+                  <div className="row my-5">
+                    {jobApplicants.map((applicant) => (
+                      <MappingJobApplicants applicant={applicant} />
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </Content>
