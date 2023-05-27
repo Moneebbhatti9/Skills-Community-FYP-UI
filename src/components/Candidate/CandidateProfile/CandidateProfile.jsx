@@ -16,6 +16,8 @@ import jwtDecode from "jwt-decode";
 import "./css/Candidate.css";
 import dummyLogo from "./Assets/dummyLogo.png";
 import hostUrl from "../../Assets/Api";
+import { MdCloudUpload, MdDelete } from "react-icons/md";
+import { AiFillFileImage } from "react-icons/ai";
 const { Header, Content, Footer, Sider } = Layout;
 
 const CandidateProfile = () => {
@@ -32,6 +34,8 @@ const CandidateProfile = () => {
   const [candidateAge, setCandidateAge] = useState("");
   const [candidateEducationalLevel, setCandidateEducationLevel] = useState("");
   const [candidatelanguage, setCandidateLanguage] = useState("");
+  const [image, setImage] = useState(null);
+  const [fileName, setFileName] = useState(null);
 
   const [twitter, setTwitter] = useState("");
   const [facebook, setFacebook] = useState("");
@@ -44,8 +48,6 @@ const CandidateProfile = () => {
 
   const [logo, setLogo] = useState("");
   const [candidateLogoModel, setCandidateLogoModel] = useState(false);
-
-  console.log("res logo state : ", logo);
 
   const [show, setShow] = useState(false);
   const [form] = Form.useForm();
@@ -145,30 +147,40 @@ const CandidateProfile = () => {
       },
     };
 
-    const candidateProfile = {
-      fullName: candidateFullName,
-      jobTitle: jobTitle,
-      phone: candidatePhone,
-      email: candidateEmail,
-      website: candidateWebsite,
-      currentSalary: candidateCurrentSalary,
-      expectedSalary: candidateExpectedSalary,
-      experience: candidateExperience,
-      age: parseInt(candidateAge),
-      educationLevel: candidateEducationalLevel,
-      languages: candidatelanguage,
-      description: candidateDescription,
-      userId: userId.id,
-    };
+    if (fileName == null) return;
+    const imageRef = ref(storage, `cv/${fileName.name}`);
+    uploadBytes(imageRef, fileName).then((res) => {
+      getDownloadURL(imageRef).then((url) => {
+        console.log("Resume Url", url);
 
-    try {
-      axios.post(apiUrl, candidateProfile, config).then((res) => {
-        setShow(false);
-        toast.info("Candidate Profile Added Successfully ...");
+        const candidateProfile = {
+          fullName: candidateFullName,
+          jobTitle: jobTitle,
+          phone: candidatePhone,
+          email: candidateEmail,
+          website: candidateWebsite,
+          currentSalary: candidateCurrentSalary,
+          expectedSalary: candidateExpectedSalary,
+          experience: candidateExperience,
+          age: parseInt(candidateAge),
+          educationLevel: candidateEducationalLevel,
+          languages: candidatelanguage,
+          description: candidateDescription,
+          resume: url,
+          userId: userId.id,
+        };
+
+        try {
+          axios.post(apiUrl, candidateProfile, config).then((res) => {
+            setShow(false);
+            toast.info("Candidate Profile Added Successfully ...");
+            console.log("Resolved candidate profile resume : ", res);
+          });
+        } catch (error) {
+          console.log("Errors", error);
+        }
       });
-    } catch (error) {
-      console.log("Errors", error);
-    }
+    });
   };
 
   // Creating Candidate Profile Social Links
@@ -606,6 +618,39 @@ const CandidateProfile = () => {
                             }
                           />
                         </div>
+
+                        {/* Upload Filed */}
+
+                        <div
+                          className="form"
+                          onClick={() =>
+                            document.querySelector(".input-field").click()
+                          }
+                        >
+                          <input
+                            type="file"
+                            accept="application/msword, application/pdf"
+                            className="input-field"
+                            hidden
+                            onChange={(event) => {
+                              setFileName(event.target.files[0]);
+                              setImage(event.target.files[0].name);
+                            }}
+                          />
+                          {image ? (
+                            <>
+                              <MdCloudUpload color="#1475cf" size={60} />
+                              <p>{image}</p>
+                            </>
+                          ) : (
+                            <>
+                              <MdCloudUpload color="#1475cf" size={60} />
+                              <p>Browse Resume type only doc & pdf to upload</p>
+                            </>
+                          )}
+                        </div>
+
+                        {/* Upload Filed */}
 
                         <button
                           type="primary"
