@@ -16,8 +16,7 @@ import jwtDecode from "jwt-decode";
 import "./css/Candidate.css";
 import dummyLogo from "./Assets/dummyLogo.png";
 import hostUrl from "../../Assets/Api";
-import { MdCloudUpload, MdDelete } from "react-icons/md";
-import { AiFillFileImage } from "react-icons/ai";
+import { MdCloudUpload } from "react-icons/md";
 const { Header, Content, Footer, Sider } = Layout;
 
 const CandidateProfile = () => {
@@ -151,8 +150,6 @@ const CandidateProfile = () => {
     const imageRef = ref(storage, `cv/${fileName.name}`);
     uploadBytes(imageRef, fileName).then((res) => {
       getDownloadURL(imageRef).then((url) => {
-        console.log("Resume Url", url);
-
         const candidateProfile = {
           fullName: candidateFullName,
           jobTitle: jobTitle,
