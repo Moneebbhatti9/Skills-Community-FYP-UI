@@ -9,6 +9,7 @@ import axios from "axios";
 import ManageJob from "./components/ManageJob";
 import hostUrl from "../../Assets/Api";
 import Loader from "../../ResuableComponent/Loader";
+import { toast } from "react-toastify";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -47,6 +48,23 @@ const ManageJobs = () => {
         });
     });
   }, [userId.id]);
+
+  const deleteManageJob = async (id) => {
+    console.log("ID", id);
+    setLoading(true);
+    const apiUrl = `${hostUrl}/api/company/manage/job/${id}`;
+
+    await axios
+      .delete(apiUrl)
+      .then((res) => {
+        console.log("Response", res);
+        setLoading(false);
+        toast.success("Job Delete Successfully");
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
 
   return (
     <>
@@ -154,7 +172,10 @@ const ManageJobs = () => {
                             </thead>
                             <tbody style={{ backgroundColor: "none" }}>
                               {manageJobs.map((job) => (
-                                <ManageJob job={job} />
+                                <ManageJob
+                                  job={job}
+                                  deleteManageJob={deleteManageJob}
+                                />
                               ))}
                             </tbody>
                           </table>
