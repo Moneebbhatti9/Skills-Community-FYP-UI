@@ -10,7 +10,6 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import hostUrl from "../../Assets/Api";
 import { Spin } from "antd";
-import Loader from "../../ResuableComponent/Loader";
 const { Header, Content, Footer, Sider } = Layout;
 
 const EmployerDashboard = () => {

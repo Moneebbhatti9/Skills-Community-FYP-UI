@@ -19,6 +19,7 @@ import CandidateShortListedJobs from "./components/Candidate/CandidateShortListe
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import JobApplicantDetail from "./components/Empoyer/ManageJobs/components/JobApplicantDetail";
 
 function App() {
    return (
@@ -27,6 +28,7 @@ function App() {
          <Router>
             <Routes>
                <Route path="/candidate/jobs/shortlisted" element={<CandidateShortListedJobs />} />
+               <Route path="/job/applicants/detail/:id" element={<JobApplicantDetail />} />
                <Route path="/candidate/appliedjobs" element={<CandidateAppliedJobs />} />
                <Route path="/job/applicants/:id" element={<JobApplicantsDetail /> } />
                <Route path="/candidate/dashboard" element={<CandidateDashboard />} />

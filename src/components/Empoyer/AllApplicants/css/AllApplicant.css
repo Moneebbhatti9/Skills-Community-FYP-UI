@@ -29,3 +29,7 @@
     padding: 9px 8px;
     border-radius: 15px;
 }
+
+.messageDesign {
+    background-color: gray !important;
+}

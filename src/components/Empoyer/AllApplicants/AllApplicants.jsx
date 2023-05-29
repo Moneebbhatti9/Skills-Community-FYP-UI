@@ -10,12 +10,14 @@ import axios from "axios";
 import MappingApplicant from "./components/MappingApplicant";
 import hostUrl from "../../Assets/Api";
 import Loader from "../../ResuableComponent/Loader";
+import Length from "../../ResuableComponent/Length";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const AllApplicants = () => {
   const [applicants, setApplicants] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [message] = useState("No Applicants to Manage.");
 
   const jwt = localStorage.getItem("token");
   const userId = jwtDecode(jwt);
@@ -180,15 +182,27 @@ const AllApplicants = () => {
                   </div>
                 </div>
                 {loading ? (
-                  <div>
+                  <>
                     <Loader />
-                  </div>
+                  </>
                 ) : (
-                  <div className="row my-5">
-                    {applicants.map((applicant) => (
-                      <MappingApplicant applicant={applicant} />
-                    ))}
-                  </div>
+                  <>
+                    {applicants.length > 0 ? (
+                      <>
+                        <div className="row my-5">
+                          {applicants.map((applicant) => (
+                            <MappingApplicant applicant={applicant} />
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <span className="messageDesign">
+                          <Length message={message} />
+                        </span>
+                      </>
+                    )}
+                  </>
                 )}
               </div>
             </div>

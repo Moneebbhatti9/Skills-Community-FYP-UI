@@ -3,6 +3,7 @@ import { GiMoneyStack } from "react-icons/gi";
 import { GoLocation } from "react-icons/go";
 import axios from "axios";
 import hostUrl from "../../../Assets/Api";
+import { Link } from "react-router-dom";
 
 const MappingJobApplicants = ({ applicant }) => {
   const [avatar, setAvatar] = useState("");
@@ -11,15 +12,15 @@ const MappingJobApplicants = ({ applicant }) => {
     const apiUrl = `${hostUrl}/api/company//single/applicant/avatar/${applicant.userID}`;
     const token = localStorage.getItem("token");
     const config = {
-       headers: {
-          Authorization: `Bearer ${token}`,
-       },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     axios
-       .get(apiUrl, config)
-       .then((res) => setAvatar(res.data.applicantAvatar.logo));
- }, [applicant.userID]);
+      .get(apiUrl, config)
+      .then((res) => setAvatar(res.data.applicantAvatar.logo));
+  }, [applicant.userID]);
 
   return (
     <>
@@ -57,7 +58,7 @@ const MappingJobApplicants = ({ applicant }) => {
                 title="View Application"
                 style={{ cursor: "pointer" }}
               >
-                view
+                <Link to={`/job/applicants/detail/${applicant._id}`}>view</Link>
               </div>
               <div
                 className="viewApplication text-primary mx-1"

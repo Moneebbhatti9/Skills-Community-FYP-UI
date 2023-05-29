@@ -10,12 +10,14 @@ import ManageJob from "./components/ManageJob";
 import hostUrl from "../../Assets/Api";
 import Loader from "../../ResuableComponent/Loader";
 import { toast } from "react-toastify";
+import Length from "../../ResuableComponent/Length";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const ManageJobs = () => {
   const [manageJobs, setManageJobs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [message] = useState("No Jobs to Manage.");
 
   const jwt = localStorage.getItem("token");
   const userId = jwtDecode(jwt);
@@ -50,7 +52,6 @@ const ManageJobs = () => {
   }, [userId.id]);
 
   const deleteManageJob = async (id) => {
-    console.log("ID", id);
     setLoading(true);
     const apiUrl = `${hostUrl}/api/company/manage/job/${id}`;
 
@@ -153,32 +154,42 @@ const ManageJobs = () => {
                         }}
                       >
                         {loading ? (
-                          <div>
+                          <>
                             <Loader />
-                          </div>
+                          </>
                         ) : (
-                          <table
-                            className="table table-striped "
-                            style={{ backgroundColor: "#FFFFFF" }}
-                          >
-                            <thead>
-                              <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Applications</th>
-                                <th scope="col">Created & Expired</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody style={{ backgroundColor: "none" }}>
-                              {manageJobs.map((job) => (
-                                <ManageJob
-                                  job={job}
-                                  deleteManageJob={deleteManageJob}
-                                />
-                              ))}
-                            </tbody>
-                          </table>
+                          <>
+                            {manageJobs.length > 0 ? (
+                              <>
+                                <table
+                                  className="table table-striped "
+                                  style={{ backgroundColor: "#FFFFFF" }}
+                                >
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">Title</th>
+                                      <th scope="col">Applications</th>
+                                      <th scope="col">Created & Expired</th>
+                                      <th scope="col">Status</th>
+                                      <th scope="col">Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody style={{ backgroundColor: "none" }}>
+                                    {manageJobs.map((job) => (
+                                      <ManageJob
+                                        job={job}
+                                        deleteManageJob={deleteManageJob}
+                                      />
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </>
+                            ) : (
+                              <>
+                                <Length message={message} />
+                              </>
+                            )}
+                          </>
                         )}
                       </div>
                     </div>
