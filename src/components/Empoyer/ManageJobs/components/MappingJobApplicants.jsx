@@ -4,6 +4,7 @@ import { GoLocation } from "react-icons/go";
 import axios from "axios";
 import hostUrl from "../../../Assets/Api";
 import { Link } from "react-router-dom";
+import { Tooltip } from "antd";
 
 const MappingJobApplicants = ({ applicant }) => {
   const [avatar, setAvatar] = useState("");
@@ -53,34 +54,41 @@ const MappingJobApplicants = ({ applicant }) => {
               <div className="specilization_first">App Developer</div>
             </div>
             <div className="Action d-flex mt-3">
-              <div
-                className="viewApplication text-primary"
-                title="View Application"
-                style={{ cursor: "pointer" }}
-              >
-                <Link to={`/job/applicants/detail/${applicant._id}`}>view</Link>
-              </div>
-              <div
-                className="viewApplication text-primary mx-1"
-                title="View Application"
-                style={{ cursor: "pointer" }}
-              >
-                Approve
-              </div>
-              <div
-                className="viewApplication text-primary mx-1"
-                title="View Application"
-                style={{ cursor: "pointer" }}
-              >
-                Reject
-              </div>
-              <div
-                className="viewApplication text-primary mx-1"
-                title="View Application"
-                style={{ cursor: "pointer" }}
-              >
-                Delete
-              </div>
+              <Tooltip placement="bottom" title="View Application">
+                <div
+                  className="viewApplication text-primary"
+                  style={{ cursor: "pointer" }}
+                >
+                  <Link to={`/job/applicants/detail/${applicant._id}`}>
+                    view
+                  </Link>
+                </div>
+              </Tooltip>
+              <Tooltip placement="bottom" title="Approve Application">
+                <div
+                  className="viewApplication text-primary mx-1"
+                  style={{ cursor: "pointer" }}
+                >
+                  Approve
+                </div>
+              </Tooltip>
+              <Tooltip placement="bottom" title="Reject Application">
+                <div
+                  className="viewApplication text-primary mx-1"
+                  style={{ cursor: "pointer" }}
+                >
+                  Reject
+                </div>
+              </Tooltip>
+              <Tooltip placement="bottom" title="Delete Application">
+                <div
+                  className="viewApplication text-primary mx-1"
+                  title="View Application"
+                  style={{ cursor: "pointer" }}
+                >
+                  Delete
+                </div>
+              </Tooltip>
             </div>
           </div>
         </div>
