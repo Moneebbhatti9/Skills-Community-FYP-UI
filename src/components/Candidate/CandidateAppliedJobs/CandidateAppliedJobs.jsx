@@ -15,9 +15,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const CandidateAppliedJobs = () => {
   const [appliedJobs, setAppliedJobs] = useState([]);
   const [loading, setLoading] = useState("");
-  const [message, setMessage] = useState(
-    "You don't have apply for jobs yet ..."
-  );
+  const [message] = useState("You don't have apply for jobs yet ...");
 
   const jwt = localStorage.getItem("token");
   const userId = jwtDecode(jwt);
