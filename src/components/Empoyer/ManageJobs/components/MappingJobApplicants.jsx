@@ -54,7 +54,7 @@ const MappingJobApplicants = ({ applicant }) => {
               <div className="specilization_first">App Developer</div>
             </div>
             <div className="Action d-flex mt-3">
-              <Tooltip placement="bottom" title="View Application">
+              <Tooltip placement="top" title="View Application">
                 <div
                   className="viewApplication text-primary"
                   style={{ cursor: "pointer" }}

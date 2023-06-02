@@ -10,6 +10,7 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import hostUrl from "../../Assets/Api";
 import { Spin } from "antd";
+import MappingJob from "./components/MappingJob";
 const { Header, Content, Footer, Sider } = Layout;
 
 const EmployerDashboard = () => {
@@ -254,8 +255,11 @@ const EmployerDashboard = () => {
                 style={{ backgroundColor: "#FFFFFF" }}
               >
                 <div className="row">
-                  <div className="col-lg-6">1</div>
-                  <div className="col-lg-6">1</div>
+                  <div className="col-lg-12 d-flex p-5">
+                    {jobs.map((job) => (
+                      <MappingJob key={job.id} job={job} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
