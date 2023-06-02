@@ -6,13 +6,11 @@ import { GoLocation } from "react-icons/go";
 import { AiOutlineUser } from "react-icons/ai";
 import { CiCalendarDate } from "react-icons/ci";
 import { Link, useParams } from "react-router-dom";
-import { Space, Spin } from "antd";
-import { toast } from "react-toastify";
 import NavBar from "../../../ResuableComponent/NavBar";
 import { GiMoneyStack, GiSandsOfTime } from "react-icons/gi";
+import "./css/JobApplicantDetail.css";
 import Footer from "../../../ResuableComponent/Footer";
 import "../../../Jobs/JobsComponents/css/SingleJobDetail.css";
-import jwtDecode from "jwt-decode";
 import axios from "axios";
 import hostUrl from "../../../Assets/Api";
 
@@ -42,6 +40,10 @@ const JobApplicantDetail = () => {
     });
   }, [applicantId, singleApplicantDetail.userID]);
 
+  const handleResumeBlank = (resume) => {
+    window.open(resume, "_blank");
+  };
+
   return (
     <>
       <NavBar />
@@ -55,12 +57,12 @@ const JobApplicantDetail = () => {
                   //  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHcxVd5Hxs2G_4YVx0ks8pSwJBL2tzFpQBQVS1ZMmb6g&s"
                   src={avatar}
                   alt=""
-                  className="applicantAvatar"
+                  className="candidateAvatar"
                 />
               </div>
               <div className="" style={{ margin: "1rem" }}>
                 <Link to="#" style={{ textDecoration: "none", color: "black" }}>
-                  <h4>{singleApplicantDetail.jobTitle}</h4>
+                  <h4>{singleApplicantDetail.fullName}</h4>
                 </Link>
                 <div className="list d-flex justify-content-between">
                   {/* <div className="location" style={{ fontSize: "14px" }}>
@@ -70,17 +72,8 @@ const JobApplicantDetail = () => {
                     <GoLocation className="text-primary" />{" "}
                     {singleApplicantDetail.city},{singleApplicantDetail.country}
                   </div>
-                  &nbsp;&nbsp;&nbsp;
-                  <div className="location" style={{ fontSize: "14px" }}>
-                    <ImClock className="text-primary" /> 11 Hours ago
-                  </div>
-                  &nbsp;&nbsp;&nbsp;
-                  <div className="location" style={{ fontSize: "14px" }}>
-                    <GiMoneyStack className="text-primary" />{" "}
-                    {singleApplicantDetail.offeredSalary}
-                  </div>
                 </div>
-                <div className="time d-flex justify-content-start mt-3">
+                {/* <div className="time d-flex justify-content-start mt-3">
                   <div
                     style={{
                       padding: "3px 20px",
@@ -116,13 +109,17 @@ const JobApplicantDetail = () => {
                   >
                     Urgent
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
           <div className="col-lg-4 col-md-12 col-sm-12 d-flex justify-content-lg-end justify-content-md-start justify-content-sm-start">
             <div>
-              <button className="btn btn-primary" style={{ marginTop: "1rem" }}>
+              <button
+                onClick={() => handleResumeBlank(singleApplicantDetail.resume)}
+                className="btn btn-primary"
+                style={{ marginTop: "1rem" }}
+              >
                 Download CV/Resume
               </button>
             </div>
@@ -134,10 +131,10 @@ const JobApplicantDetail = () => {
         <div className="row d-flex">
           <div className="col-lg-8 col-md-12 col-sm-12">
             <div className="container">
-              <h5 className="job-detail">Job Description</h5>
+              <h5 className="job-detail">Candidate Description</h5>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: singleApplicantDetail.jobDescription,
+                  __html: singleApplicantDetail.description,
                 }}
               ></div>
             </div>
@@ -157,55 +154,68 @@ const JobApplicantDetail = () => {
 
                 <ul class="job-overview">
                   <li className="d-flex">
+                    <AiOutlineUser className="icon text-primary" />
+                    <div style={{ marginLeft: "1rem" }}>
+                      <h5>Candidate Name:</h5>
+                      <span className="overviewColor">
+                        {singleApplicantDetail.fullName}
+                      </span>
+                    </div>
+                  </li>
+                  <li className="d-flex">
                     <CiCalendarDate className="icon text-primary" />
                     <div style={{ marginLeft: "1rem" }}>
-                      <h5>Date Posted:</h5>
-                      <span>posted </span>
+                      <h5>Education:</h5>
+                      <span className="overviewColor">
+                        {singleApplicantDetail.educationLevel}{" "}
+                      </span>
                     </div>
                   </li>
                   <li className="d-flex">
                     <GiSandsOfTime className="icon text-primary" />
                     <div style={{ marginLeft: "1rem" }}>
-                      <h5>Expiration date:</h5>
-                      <span>{singleApplicantDetail.applicationDeadLine}</span>
+                      <h5>Skill:</h5>
+                      <span className="overviewColor">
+                        {singleApplicantDetail.jobTitle}
+                      </span>
                     </div>
                   </li>
                   <li className="d-flex">
                     <GoLocation className="icon text-primary" />
                     <div style={{ marginLeft: "1rem" }}>
                       <h5>Location:</h5>
-                      <span>
+                      <span className="overviewColor">
                         {singleApplicantDetail.city},
                         {singleApplicantDetail.country}
                       </span>
                     </div>
                   </li>
-                  <li className="d-flex">
-                    <AiOutlineUser className="icon text-primary" />
-                    <div style={{ marginLeft: "1rem" }}>
-                      <h5>Job Title:</h5>
-                      <span>{singleApplicantDetail.jobTitle}</span>
-                    </div>
-                  </li>
+
                   <li className="d-flex">
                     <ImClock className="icon text-primary" />
                     <div style={{ marginLeft: "1rem" }}>
-                      <h5>Hours:</h5>
-                      <span>50h / week</span>
+                      <h5>Phone:</h5>
+                      <span className="overviewColor">
+                        {singleApplicantDetail.phone}
+                      </span>
                     </div>
                   </li>
                   <li className="d-flex">
                     <FaCoins className="icon text-primary" />
                     <div style={{ marginLeft: "1rem" }}>
-                      <h5>Rate:</h5>
-                      <span>$15 - $25 / hour</span>
+                      <h5>Experience:</h5>
+                      <span className="overviewColor">
+                        {singleApplicantDetail.experience}
+                      </span>
                     </div>
                   </li>
                   <li className="d-flex">
                     <GiMoneyStack className="icon text-primary" />
                     <div style={{ marginLeft: "1rem" }}>
-                      <h5>Salary:</h5>
-                      <span>${singleApplicantDetail.offeredSalary}</span>
+                      <h5>Age:</h5>
+                      <span className="overviewColor">
+                        {singleApplicantDetail.age}
+                      </span>
                     </div>
                   </li>
                 </ul>
@@ -214,6 +224,7 @@ const JobApplicantDetail = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

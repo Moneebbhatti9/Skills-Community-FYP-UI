@@ -1,0 +1,12 @@
+.overviewColor{
+  color: grey;
+}
+
+.candidateAvatar{
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
