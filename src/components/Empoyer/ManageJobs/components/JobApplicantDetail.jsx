@@ -16,57 +16,31 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import hostUrl from "../../../Assets/Api";
 
-const JobApplicantDetail = ({ applicant }) => {
+const JobApplicantDetail = () => {
   const [singleApplicantDetail, setSingleApplicantDetail] = useState({});
-  const [companyName, setCompanyName] = useState("");
-  const [teamSizes, setTeamSizes] = useState("");
-  const [estSince, setEstSince] = useState("");
-  const [phone, setPhone] = useState("");
-  const [emialAddress, setEmialAddress] = useState("");
-  const [website, setWebsite] = useState("");
-  const [companyId, setCompanyId] = useState("");
-
-  const [companyLogoPublic, setCompanyLogoPublic] = useState("");
   const [avatar, setAvatar] = useState("");
-
-  // useEffect(() => {
-  //   const apiUrl = `${hostUrl}/api/company//single/applicant/avatar/${applicant.userID}`;
-  //   const token = localStorage.getItem("token");
-  //   const config = {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-
-  //   axios
-  //     .get(apiUrl, config)
-  //     .then((res) => setAvatar(res.data.applicantAvatar.logo));
-  // }, [applicant.userID]);
 
   const param = useParams();
   const applicantId = param.id;
 
-  console.log("ID", applicantId);
-
-  let user;
-  const jwt = localStorage.getItem("token");
-  if (jwt) {
-    user = jwtDecode(jwt);
-  }
-
   useEffect(() => {
     const apiUrl = `${hostUrl}/api/company/single/applicants/of/job/detail/${applicantId}`;
     axios.get(apiUrl).then((res) => {
-      setSingleApplicantDetail(res);
-      console.log("Profile Public", res.data);
+      setSingleApplicantDetail(res.data.applicant);
 
-      // const userID = res.data[0].userID;
-      // const apiUrlLogo = `${hostUrl}/api/company/public/profile/logo/${userID}`;
-      // axios.get(apiUrlLogo).then((res) => {
-      //   setCompanyLogoPublic(res.data.companyLogo.logo);
-      // });
+      const url = `${hostUrl}/api/company//single/applicant/avatar/${singleApplicantDetail.userID}`;
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      axios.get(url, config).then((res) => {
+        setAvatar(res.data.applicantAvatar.logo);
+      });
     });
-  }, [applicantId]);
+  }, [applicantId, singleApplicantDetail.userID]);
 
   return (
     <>
@@ -147,26 +121,11 @@ const JobApplicantDetail = ({ applicant }) => {
             </div>
           </div>
           <div className="col-lg-4 col-md-12 col-sm-12 d-flex justify-content-lg-end justify-content-md-start justify-content-sm-start">
-            {jwt ? (
-              <div>
-                <button
-                  className="btn btn-primary"
-                  style={{ marginTop: "1rem" }}
-                >
-                  Download CV/Resume
-                </button>
-              </div>
-            ) : (
-              <div>
-                <span
-                  className="btn btn-primary"
-                  style={{ marginTop: "1rem" }}
-                  // onClick={handleShow}
-                >
-                  Login To Apply for job
-                </span>
-              </div>
-            )}
+            <div>
+              <button className="btn btn-primary" style={{ marginTop: "1rem" }}>
+                Download CV/Resume
+              </button>
+            </div>
           </div>
         </div>
       </div>
