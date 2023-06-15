@@ -23,6 +23,30 @@ const MappingJobApplicants = ({ applicant }) => {
       .then((res) => setAvatar(res.data.applicantAvatar.logo));
   }, [applicant.userID]);
 
+  const handleApproveApplication = async (email) => {
+    const obj = {
+      email: email,
+    };
+
+    await axios
+      .post(`${hostUrl}/api/company/approve/application`, obj)
+      .then((res) => {
+        console.log("res", res);
+      });
+  };
+
+  const handleRejectedApplication = async (email) => {
+    const obj = {
+      email: email,
+    };
+
+    await axios
+      .post(`${hostUrl}/api/company/approve/application`, obj)
+      .then((res) => {
+        console.log("res", res);
+      });
+  };
+
   return (
     <>
       <div className="col-lg-6 mt-2">
@@ -68,6 +92,7 @@ const MappingJobApplicants = ({ applicant }) => {
                 <div
                   className="viewApplication text-primary mx-1"
                   style={{ cursor: "pointer" }}
+                  onClick={(e) => handleApproveApplication(applicant.email)}
                 >
                   Approve
                 </div>
@@ -76,11 +101,12 @@ const MappingJobApplicants = ({ applicant }) => {
                 <div
                   className="viewApplication text-primary mx-1"
                   style={{ cursor: "pointer" }}
+                  onClick={(e) => handleRejectedApplication(applicant.email)}
                 >
                   Reject
                 </div>
               </Tooltip>
-              <Tooltip placement="bottom" title="Delete Application">
+              {/* <Tooltip placement="bottom" title="Delete Application">
                 <div
                   className="viewApplication text-primary mx-1"
                   title="View Application"
@@ -88,7 +114,7 @@ const MappingJobApplicants = ({ applicant }) => {
                 >
                   Delete
                 </div>
-              </Tooltip>
+              </Tooltip> */}
             </div>
           </div>
         </div>
