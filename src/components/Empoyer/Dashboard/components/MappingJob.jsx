@@ -9,7 +9,8 @@ import { Tooltip } from "antd";
 const MappingJob = ({ job }) => {
   return (
     <>
-      <div className="col-lg-6 mt-4">
+      <div className="col-lg-6 p-5">
+        {/* <div className="col-lg-6 mt-4"> */}
         <div className="border py-4 px-3 rounded mx-3">
           <div className="d-flex">
             <div className="image">
@@ -103,6 +104,7 @@ const MappingJob = ({ job }) => {
           </div>
         </div>
       </div>
+      {/* </div> */}
     </>
   );
 };

@@ -127,7 +127,7 @@ const CandidateDashboard = () => {
                     </Card>
                   </div>
                   <div className="col-lg-3 col-md-6 col-sm-12 mt-4">
-                    <Card style={{}}>
+                    {/* <Card style={{}}>
                       <div className="d-flex justify-content-around">
                         <div className="">
                           <FaFileInvoice className="text-danger icon_design-application" />
@@ -153,10 +153,10 @@ const CandidateDashboard = () => {
                           </p>
                         </div>
                       </div>
-                    </Card>
+                    </Card> */}
                   </div>
                   <div className="col-lg-3 col-md-6 col-sm-12 mt-4">
-                    <Card style={{}}>
+                    {/* <Card style={{}}>
                       <div className="d-flex justify-content-around">
                         <div className="">
                           <TfiCommentAlt className="text-warning icon_design-messages" />
@@ -182,10 +182,10 @@ const CandidateDashboard = () => {
                           </p>
                         </div>
                       </div>
-                    </Card>
+                    </Card> */}
                   </div>
                   <div className="col-lg-3 col-md-6 col-sm-12 mt-4">
-                    <Card style={{}}>
+                    {/* <Card style={{}}>
                       <div className="d-flex justify-content-around">
                         <div className="">
                           <BsBookmark className="text-success icon_design-shortlist" />
@@ -211,7 +211,7 @@ const CandidateDashboard = () => {
                           </p>
                         </div>
                       </div>
-                    </Card>
+                    </Card> */}
                   </div>
                 </div>
               </div>

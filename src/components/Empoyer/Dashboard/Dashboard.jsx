@@ -191,7 +191,7 @@ const EmployerDashboard = () => {
                     </Card>
                   </div>
                   <div className="col-lg-3 col-md-6 col-sm-12 mt-4">
-                    <Card style={{}}>
+                    {/* <Card style={{}}>
                       <div className="d-flex justify-content-around">
                         <div className="">
                           <TfiCommentAlt className="text-warning icon_design-messages" />
@@ -217,10 +217,10 @@ const EmployerDashboard = () => {
                           </p>
                         </div>
                       </div>
-                    </Card>
+                    </Card> */}
                   </div>
                   <div className="col-lg-3 col-md-6 col-sm-12 mt-4">
-                    <Card style={{}}>
+                    {/* <Card style={{}}>
                       <div className="d-flex justify-content-around">
                         <div className="">
                           <BsBookmark className="text-success icon_design-shortlist" />
@@ -246,7 +246,7 @@ const EmployerDashboard = () => {
                           </p>
                         </div>
                       </div>
-                    </Card>
+                    </Card> */}
                   </div>
                 </div>
               </div>
@@ -255,11 +255,10 @@ const EmployerDashboard = () => {
                 style={{ backgroundColor: "#FFFFFF" }}
               >
                 <div className="row">
-                  <div className="col-lg-12 d-flex p-5">
-                    {jobs.map((job) => (
-                      <MappingJob key={job.id} job={job} />
-                    ))}
-                  </div>
+                  {jobs.map((job) => (
+                    <MappingJob key={job.id} job={job} />
+                  ))}
+                  {/* </div> */}
                 </div>
               </div>
             </div>
